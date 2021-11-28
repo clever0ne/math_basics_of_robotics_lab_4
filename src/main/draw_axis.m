@@ -3,7 +3,7 @@ function draw_axis(frames)
     colour = ['r', 'g', 'b'];
     axe = ['x', 'y', 'z'];
     for idx1 = 1 : num_of_frames
-        tf = frames(:, :, idx1);
+        tf = frames(:, :, idx1) * 10;
         r = tf(1 : 3, 1 : 3);
         p = tf(1 : 3, 4);
         xyz = p + r * eye(3);
@@ -19,18 +19,18 @@ function draw_axis(frames)
             hold on;
         end
         
-        pos = ['$(', num2str(p(1), '%.3f'), ', ', ...
-                     num2str(p(2), '%.3f'), ', ', ...
-                     num2str(p(3), '%.3f'), ')$'];
+        % pos = ['$(', num2str(p(1), '%.3f'), ', ', ...
+        %              num2str(p(2), '%.3f'), ', ', ...
+        %              num2str(p(3), '%.3f'), ')$'];
         % text(p(1), p(2), p(3), pos, 'Interpreter', 'latex', 'FontSize', 8);
     end
     
     grid on;
     axis equal;
-    axis([-15, 15, -15, 15, 0, 25]);
-    xlabel('$x, \rm m$', 'Interpreter', 'latex', 'FontSize', 12);
-    ylabel('$y, \rm m$', 'Interpreter', 'latex', 'FontSize', 12);
-    zlabel('$z, \rm m$', 'Interpreter', 'latex', 'FontSize', 12);
+    axis([-150, 150, -150, 150, -50, 250]);
+    xlabel('$x, \rm mm$', 'Interpreter', 'latex', 'FontSize', 12);
+    ylabel('$y, \rm mm$', 'Interpreter', 'latex', 'FontSize', 12);
+    zlabel('$z, \rm mm$', 'Interpreter', 'latex', 'FontSize', 12);
     set(gca, 'FontName', 'Euclid', 'FontSize', 12);
     
     hold off;
